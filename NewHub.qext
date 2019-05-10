@@ -1,0 +1,1 @@
+{"name":"NewHub","description":"NewHub is a brand new experience for Qlik Sense","type":"mashup","author":"Cluster Design","keywords":"qlik-sense, mashup","license":"2018 ý Cluster Design - All rights reserved.","repository":"","preview":"/Default/newhub-preview.png","src":"/content/Default/newhub-preview.png","dependencies":{"qlik-sense":">=3.0.x"}}

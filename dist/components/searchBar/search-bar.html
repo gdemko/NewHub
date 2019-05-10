@@ -1,0 +1,22 @@
+<div ng-controller="searchBar" ng-keydown="inputSearchDown($event)" ng-class="{'search-closed':
+    !$root.searchActive}" class="search-master" align="center">
+    <form class="uk-search uk-search-default search-box"><span uk-search-icon></span><input
+            ng-click="toggleSearchOpen()" class="uk-search-input" ng-change="toggleSearchOpen()" type="text"
+            ng-model="searchApp" placeholder="Buscar app"><a ng-click="toggleSearchClosed()"
+            class="close-search-options"><i class="fal fa-times"></i>Fechar</a>
+        <div class="show-options">
+            <ul>
+                <div ng-show="($root.apps|filter:searchApp).length> 0"><p>Nome da aplicação / Ultima atualizacão</p>
+                </div>
+                <li ng-repeat="app in $root.apps | filter:{'name': searchApp} | limitTo: 5 | orderBy:
+                    'originalModifiedDate'"><a ng-if="$root.hasQlikToken" ng-click="clearField()"
+                        class="search-link" ng-href="#/{{brandContext}}/{{app.type}}/{{app.id}}">{{app.name}}
+                        <span>{{app.modifiedDate}}</span></a><a ng-if="!$root.hasQlikToken" class="search-link
+                        no-token">{{app.name}}<span>{{app.modifiedDate}}</span></a></li>
+                <div ng-show="($root.apps|filter:{'name': searchApp}).length==0">
+                    <p>Nenhuma aplicação encontrada para o termo procurado</p>
+                </div>
+            </ul>
+        </div>
+    </form>
+</div>

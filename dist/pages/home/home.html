@@ -1,0 +1,46 @@
+<div class="geral-home"> 
+    <div class="cards-list">
+        
+        <div ng-show="!featuredApps && !showEmptyMessage" class="cards-home-loader"><span uk-spinner></span></div>
+        <div ng-if="showEmptyMessage" class="home-empty-message"><span>{{emptyMessage}}</span></div>
+        <div ng-repeat="app in featuredApps | orderBy: orderList | filter: {featuredApp: true}" class="card-size">
+            <div class="expand">
+                <div class="card-home custom-font uk-grid-collapse uk-text-center" uk-grid>
+                    <div class="top-card custom-font" ng-style="{'background-image' :
+                        $root.featuredCards.showThumbnails ? 'url({{app.thumbnail}})' : ''}">
+                        <div ng-style="{'background-color': app.appColor}" class="card-color-layer"></div><span
+                            class="top-card-custom card-name-app top-card-custom-desktop" ng-style="{'color':
+                            app.appTextColor}">{{app.name}}</span><span class="top-card-custom card-name-stream
+                            custom-color-font" ng-style="{'color': app.appTextColor}">{{app.stream.name}}</span>
+                    </div>
+                    <div class="bottom-card custom-font">
+                        <div class="left-bottom-card custom-font">
+                            <div uk-spinner="{ratio: 2.5}" ng-show="!app.showDescription && !app.mainKpis"></div>
+                            <div class="card-label card-description" ng-if="app.showDescription">{{app.description}}
+                            </div>
+                            <div ng-if="app.mainKpis.length> 0" class="content-card custom-font" ng-repeat="kpi in
+                                app.mainKpis"><span class="card-label">{{kpi.title}}</span><span
+                                    class="number-label">{{kpi.value}}</span></div>
+                        </div>
+                        <div class="right-bottom-card">
+                            <div class="card-info-container">
+                                <div ng-show="app.type=='qvf'" class="label-custom"><span class="card-label
+                                        custom-font">Publicado em:&nbsp</span><span
+                                        class="info-label">{{app.publishTime}}</span></div>
+                                <div ng-show="app.type=='qvf'" class="label-custom"><span class="card-label
+                                        custom-font">Ultimo carregamento:&nbsp</span><span
+                                        class="info-label">{{app.lastReloadTime}}</span></div>
+                                <div class="label-custom"><span class="card-label custom-font">Ultima
+                                        atualização:&nbsp</span><span class="info-label">{{app.modifiedDate}}</span>
+                                </div>
+                            </div><a ng-if="!$root.hasQlikToken" class="open-app-btn custom-font no-token">Sem
+                                permissão</a><a ng-if="$root.hasQlikToken"
+                                ng-href="#/{{$root.brandContext}}/{{app.type}}/{{app.id}}" class="open-app-btn
+                                custom-font">Abrir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

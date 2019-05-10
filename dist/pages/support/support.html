@@ -1,0 +1,16 @@
+<div ng-if="$root.supportActive" class="support custom-font">
+    <h1 class="page-title custom-font">{{$root.config.support.content.title}}</h1>
+    <p class="custom-font">{{$root.config.support.content.description}}</p>
+    <div class="information-support custom-font">
+        <div class="email-support custom-font">
+            <div class="email-icon custom-font"><i class="fal fa-envelope"></i></div>
+            <div class="email-information custom-font"><span ng-repeat="email in
+                    $root.config.support.content.contact.emails">{{email}}</span></div>
+        </div>
+        <div class="fone-support custom-font">
+            <div class="fone-icon custom-font"><i class="fal fa-phone"></i></div>
+            <div class="fone-information custom-font"><span ng-repeat="phone in
+                    $root.config.support.content.contact.phones">{{phone}}</span></div>
+        </div>
+    </div>
+</div>

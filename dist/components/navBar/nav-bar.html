@@ -1,0 +1,81 @@
+<nav ng-controller="navBar" class="navbar-style" uk-navbar="" id="navigation" uk-sticky="bottom: #offset"><a
+        class="hamburguer-style hamburguer-style-desktop" ng-click="toggleMenu()" ng-class="{'burguer-active':
+        menuActive}"><i class="fal fa-bars"></i></a>
+
+    <div ng-class="{'menu-closed': !$root.menuActive}" class="menu navbar-mobile-style">
+
+        <div class="top-navbar-mobile"><a class="hamburguer-style" ng-click="toggleMenu()"
+                ng-class="{'menu-active': menuActive}"><i class="fal fa-bars"></i></a><a href="#/{{$root.brandContext}}"
+                class="logo-top-menu"></a>
+        </div>
+        <div class="sidebar-container"></div>
+
+        <!-- Alternar Pointer/Portobello 
+        <div class="vision-switcher"><a class="btn-left-switch" href="#/pointer">Pointer </a> <a
+                class="btn-right-switch" href="#/portobello">Portobello </a>
+        </div>
+        -->
+
+        <ul class="uk-nav
+                uk-nav-default" uk-nav>
+            <li ng-class="{'menu-active': $root.activeHref=='#/'+$root.brandContext}"
+                ng-class="{'uk-active': $route.current.activetab=='home'}" class="item-menu custom-font"><a
+                    href="#/{{$root.brandContext}}"> <i class="far fa-home nav-icon"></i>Início</a></li>
+            <li class="uk-parent has-submenu item-menu custom-font" group-id="{{key}}"
+                ng-class="{'menu-active': $root.activeParentMenu==key}" ng-repeat="(key, value) in apps |
+                    groupBy: 'group'" ng-if="key !='undefined'"><a><i class="{{value[0].groupIcon}}
+                            nav-icon"></i>{{key}}</a>
+                <ul class="uk-nav-sub nav-sub-one">
+                    <li ng-repeat="app in value"><a ng-if="app.id && !$root.hasQlikToken"
+                            class="no-token">{{app.name}}</a><a ng-if="app.id && $root.hasQlikToken" ng-class="{'sub-menu-active':
+                                $root.activeHref=='#/{{$root.brandContext}}/{{app.type}}/{{app.id}}'}"
+                            href="#/{{$root.brandContext}}/{{app.type}}/{{app.id}}">{{app.name}} </a> <a ng-if="app.url"
+                            app-url="{{app.url}}" ng-class="{'sub-menu-active':
+                                $root.activeHref=='#/url/{{app.name}}'}"
+                            href="#/{{$root.brandContext}}/url/{{app.name}}">{{app.name}} </a> </li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Metas/Suporte/LogoNewHub
+        <div class="footer-menu custom-font">
+            <div class="footer-help-links"><a href="#">Metas</a><a href="#">Suporte</a></div>
+            <div class="footer-logo-container"><img class="logo-footer-sidebar" src="/dist/assets/img/NewHub.png">
+            </div>
+        </div>
+        -->
+    </div>
+
+    <div ng-include src="'components/searchBar/search-bar.html'" class="search"></div>
+
+    <!-- DIV Notificação e Avatar -->
+    <div class="nav-right-token">
+        <!--
+        <div ng-if="$root.config.activityBar.enabled" ng-click="toggleActivity()" ng-class="{'active': activityActive}"
+            class="bell-div"><i class="fas
+                                            fa-bell bell-icon"></i></div>
+        <div ng-class="{'edit-photo': $root.editPhoto, 'cropper-photo':
+                                        $root.modalAvatarVisibility}" class="user-div">
+            <div ng-show="!$root.modalAvatarVisibility" ng-class="{'uk-hidden':
+                                            !$root.editPhoto}" class="uk-animation-fade information-box">
+                <h1 class="custom-font">{{$root.user.userName}}</h1><span
+                    class="custom-font">{{$root.user.userDirectory}}</span><a class="custom-font"
+                    ng-click="openModalAvatar()">Trocar foto</a><a class="custom-font" ng-click="logout()">Logout</a>
+            </div>
+            <div ng-show="!$root.modalAvatarVisibility" ng-click="openEdit()" class="user-image" ng-style="{'background-image':
+                                            'url('+$root.user.image+'), url(./assets/img/avatar_empty.png)'}">
+                <div class="user-image-edit" ng-click="openModalAvatar()"><i class="fal
+                                                fa-camera"></i><span>Trocar foto</span></div>
+            </div>
+            <div ng-class="{'uk-hidden': !$root.editPhoto}" ng-click="closeEdit()" class="x-close"><i
+                    class="fal fa-times"></i></div>
+            <div ng-include src="'components/modalAvatar/modal-avatar.html'"> </div>
+        </div>
+        -->
+    </div>
+    
+
+    <div class="search-custom" ng-click="toggleSearchClosed()"></div>
+    <div class="navbar-custom" ng-click="navbarClosed()"></div>
+</nav>
+<div ng-include src="'components/activityBar/activity-bar.html'" class=""></div>

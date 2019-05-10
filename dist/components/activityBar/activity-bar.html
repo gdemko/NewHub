@@ -1,0 +1,25 @@
+<!-- MENU LATERAL DIREITO
+<div class="activity-custom" ng-click="activityClosed()"></div>
+<div ng-if="$root.config.activityBar.enabled" ng-controller="activityBar" ng-class="{'activity-closed':
+    !$root.activityActive}" class="activity-bar custom-font">
+    <div class="top-activity">
+        <h1>Atividade</h1>
+        <h2>{{activity.title}}<i uk-tooltip="title: {{activity.description}}; delay: 100" class="info-hover fal
+                fa-info-circle"></i></h2><a ng-click="toggleActivity()" class="close-activity custom-font"><i
+                class="fal fa-times"></i></a>
+    </div>
+    <div ng-if="showEmptyMessage" class="activity-bar-empty-message"><span>{{emptyMessage}}</span></div>
+    <div class="activity-card custom-font" ng-repeat="update in updateList | orderBy: activity.orderBy">
+        <div ng-show="activity.showUserImg" class="foto" ng-style="{'background-image':
+            (update.userModified==$root.user.userId) ? 'url('+$root.user.image+'),
+            url(./assets/img/avatar_empty.png)' : 'url('+update.userImage+'),
+            url(./assets/img/avatar_empty.png)'}"> </div> <div class="activity-information-card">
+            <h1>{{update.userModified}}</h1>
+            <p>Modificou&nbsp<a ng-if="$root.hasQlikToken"
+                    href="#/{{brandContext}}/{{update.type}}/{{update.id}}">{{update.name}}&nbsp </a> <a
+                    ng-if="!$root.hasQlikToken"
+                    class="no-token">{{update.name}}&nbsp</a><span>{{update.modifiedDate}}</span></p>
+        </div>
+    </div>
+</div>
+-->

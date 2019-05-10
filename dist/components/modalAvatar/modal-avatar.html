@@ -1,0 +1,19 @@
+<div ng-controller="UploadCtrl" ng-show="$root.modalAvatarVisibility" id="modal-avatar">
+    <div uk-spinner="ratio: 2.5" ng-show="imageLoading"></div>
+    <div class="avatar-action-container">
+        <div class="img-cropper-container">
+            <div class="img-select-container"><button class="custom-btn custom-font" ngf-select ng-model="picFile"
+                    accept="image/*" ngf-max-height="3000" ngf-max-size="7MB">Selecionar foto</button><span
+                    class="custom-font">*.JPG e 7MB max.</span></div>
+            <div ngf-drag-over-class ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea"><span
+                    class="drag-drop-message custom-font" ng-show="!picFile">Arraste e solte sua foto aqui</span>
+                <img-crop image="picFile | ngfDataUrl" result-image="croppedDataUrl"
+                    ng-init="croppedDataUrl=''"></img-crop>
+            </div>
+        </div>
+        <div ng-show="picFile" class="img-preview-container custom-font"><span>Pre-visualização</span>
+            <div><img ng-src="{{croppedDataUrl}}"></div><button class="custom-btn custom-font"
+                ng-click="upload(croppedDataUrl, picFile.name)">Save</button>
+        </div>
+    </div>
+</div>
