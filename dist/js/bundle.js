@@ -313,7 +313,6 @@ angular.module('hubApp').controller('navBar' , ['$scope', '$rootScope', 'qlikSer
         }
     })
 
-    /*
     $rootScope.initHub = function(){
         qlikService.getAuthUser().then(function(user){
             $rootScope.user = user;
@@ -409,7 +408,6 @@ angular.module('hubApp').controller('navBar' , ['$scope', '$rootScope', 'qlikSer
         });
         
     }
-    */
 
     $rootScope.initHub();
    
